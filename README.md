@@ -20,24 +20,43 @@ These key concepts are essential for understanding and implementing the Mineswee
 
 # How does this work?
 
+# 1
 The necessary header files stdio.h, stdlib.h, and time.h are included to provide the required functions for input/output, memory allocation, and time-related operations.
+# 2
 The constants SIZE and MINES are defined to set the dimensions of the game board (10x10) and the number of mines (10).
+# 3
 The function initializeBoard takes a 2D array board as a parameter and initializes all cells of the board with the character '-', representing an unmarked cell.
+# 4
 The function printBoard is responsible for displaying the current state of the game board. It iterates over the rows and columns of the board array and prints the corresponding cell values.
+# 5
 The function placeMines randomly distributes the mines on the game board. It uses a loop to generate random row and column indices and marks those cells with a mine ('*'). The loop continues until the desired number of mines (MINES) is placed.
+# 6
 The function countAdjacentMines takes the board array, along with the current row and column indices, as input. It counts the number of adjacent cells that contain mines. It checks the cells in a 3x3 grid centered around the specified row and column and increments the count whenever a mine ('*') is encountered.
+# 7
 The function revealCell is a recursive function that uncovers cells on the board. It takes the board array, the revealed array, and the current row and column indices as input. If the specified cell is within the bounds of the board and has not already been revealed, it marks the cell as revealed ('R'). If the cell contains a '0', indicating no adjacent mines, it recursively calls revealCell for each adjacent cell.
+# 8
 In the main function, the board and revealed arrays are declared to represent the game board and the revealed state of the board, respectively. The variables row, col, minesLeft, and moves are used to track the player's moves, remaining mines, and the number of moves taken.
+# 9
 The srand function is called with the current time as the seed to initialize the random number generator.
+# 10
 The initializeBoard function is called twice to initialize the board and revealed arrays.
+# 11
 The placeMines function is called to randomly distribute the mines on the game board.
+# 12
 The main game loop starts with a while loop that continues until all the mines are uncovered or a mine is hit.
+# 13
 Inside the loop, the current state of the game is displayed using the printBoard function.
+# 14
 The player is prompted to enter a row and column index to uncover a cell.
+# 15
 The validity of the input is checked to ensure it is within the bounds of the board and has not been previously revealed.
+# 16
 If the selected cell contains a mine ('*'), the game is over, and the loop is exited.
 Otherwise, the countAdjacentMines function is called to determine the number of adjacent mines. The revealed board is updated with this count, and the number of remaining mines and moves are adjusted accordingly.
+# 17
 If there are no adjacent mines (count == 0), the revealCell function is called to uncover adjacent cells recursively.
+# 18
 After each move, the game checks if the player has uncovered all non-mine cells. If so, the player wins the game.
+# 19
 If the game loop ends without the player winning, it means the player hit a mine, and the game is lost.
 The appropriate end-of-game messages are displayed, and the program exits with a return value of 0.
